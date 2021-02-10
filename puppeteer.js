@@ -9,6 +9,10 @@ let _page;
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url);
+  await page.waitForSelector(".SubredditVars-r-news", {
+    visible: true,
+    timeout: 3000,
+  });
   await page.screenshot({ path: "example.png" });
   let html = await page.content();
 
